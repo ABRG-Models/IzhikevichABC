@@ -3,13 +3,13 @@
 # file.
 def update_abc_model_xml (modeldir,expt,a,b,c,d,A,B,C,T,SI,vpeak,vinit,uinit):
 
-    modelxml = modeldir+'/model.xml';
-    exptxml = modeldir+'/experiment'+`expt`+'.xml';
+    modelxml = '{0}/model.xml'.format(modeldir);
+    exptxml = '{0}/experiment{1}.xml'.format(modeldir, expt);
 
     # We have to deal with the namespace used in the model.xml file.
     ns = {'UL': 'http://www.shef.ac.uk/SpineMLNetworkLayer',
           'LL': 'http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer'}
-  
+
     # Parse the model to find the parameters.
     import xml.etree.ElementTree as et
     et.register_namespace('', "http://www.shef.ac.uk/SpineMLNetworkLayer")
@@ -25,73 +25,73 @@ def update_abc_model_xml (modeldir,expt,a,b,c,d,A,B,C,T,SI,vpeak,vinit,uinit):
             _a = float(child.find('*').get('value'))
             if a != _a:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `a`)
+                fixedvalue.set('value', repr(a))
                 updated = 1
         elif nm == 'b':
             _b = float(child.find('*').get('value'))
             if b != _b:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `b`)
+                fixedvalue.set('value', repr(b))
                 updated = 1
         elif nm == 'c':
             _c = float(child.find('*').get('value'))
             if c != _c:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `c`)
+                fixedvalue.set('value', repr(c))
                 updated = 1
         elif nm == 'd':
             _d = float(child.find('*').get('value'))
             if d != _d:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `d`)
+                fixedvalue.set('value', repr(d))
                 updated = 1
         elif nm == 'A':
             _A = float(child.find('*').get('value'))
             if A != _A:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `A`)
+                fixedvalue.set('value', repr(A))
                 updated = 1
         elif nm == 'B':
             _B = float(child.find('*').get('value'))
             if B != _B:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `B`)
+                fixedvalue.set('value', repr(B))
                 updated = 1
         elif nm == 'C':
             _C = float(child.find('*').get('value'))
             if C != _C:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `C`)
+                fixedvalue.set('value', repr(C))
                 updated = 1
         elif nm == 'T':
             _T = float(child.find('*').get('value'))
             if T != _T:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `T`)
+                fixedvalue.set('value', repr(T))
                 updated = 1
         elif nm == 'SI':
             _SI = float(child.find('*').get('value'))
             if SI != _SI:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `SI`)
+                fixedvalue.set('value', repr(SI))
                 updated = 1
         elif nm == 'v':
             _vinit = float(child.find('*').get('value'))
             if vinit != _vinit:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `vinit`)
+                fixedvalue.set('value', repr(vinit))
                 updated = 1
         elif nm == 'u':
             _uinit = float(child.find('*').get('value'))
             if uinit != _uinit:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `uinit`)
+                fixedvalue.set('value', repr(uinit))
                 updated = 1
         elif nm == 'Vpeak':
             _vpeak = float(child.find('*').get('value'))
             if vpeak != _vpeak:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `vpeak`)
+                fixedvalue.set('value', repr(vpeak))
                 updated = 1
     if (updated > 0):
         tree.write(modelxml)
@@ -105,76 +105,76 @@ def update_abc_model_xml (modeldir,expt,a,b,c,d,A,B,C,T,SI,vpeak,vinit,uinit):
         #print 'Expt file ', nm
         if nm == 'a':
             _a = float(child.find('UL:FixedValue').get('value'))
-            print '_a: ', _a
+            print ('_a: {0}'.format(_a))
             if a != _a:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `a`)
+                fixedvalue.set('value', repr(a))
                 updated = 1
         elif nm == 'b':
             _b = float(child.find('*').get('value'))
             if b != _b:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `b`)
+                fixedvalue.set('value', repr(b))
                 updated = 1
         elif nm == 'c':
             _c = float(child.find('*').get('value'))
             if c != _c:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `c`)
+                fixedvalue.set('value', repr(c))
                 updated = 1
         elif nm == 'd':
             _d = float(child.find('*').get('value'))
             if d != _d:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `d`)
+                fixedvalue.set('value', repr(d))
                 updated = 1
         elif nm == 'A':
             _A = float(child.find('*').get('value'))
             if A != _A:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `A`)
+                fixedvalue.set('value', repr(A))
                 updated = 1
         elif nm == 'B':
             _B = float(child.find('*').get('value'))
             if B != _B:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `B`)
+                fixedvalue.set('value', repr(B))
                 updated = 1
         elif nm == 'C':
             _C = float(child.find('*').get('value'))
             if C != _C:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `C`)
+                fixedvalue.set('value', repr(C))
                 updated = 1
         elif nm == 'T':
             _T = float(child.find('*').get('value'))
             if T != _T:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `T`)
+                fixedvalue.set('value', repr(T))
                 updated = 1
         elif nm == 'SI':
             _SI = float(child.find('*').get('value'))
             if SI != _SI:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `SI`)
+                fixedvalue.set('value', repr(SI))
                 updated = 1
         elif nm == 'v':
             _vinit = float(child.find('*').get('value'))
             if vinit != _vinit:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `vinit`)
+                fixedvalue.set('value', repr(vinit))
                 updated = 1
         elif nm == 'u':
             _uinit = float(child.find('*').get('value'))
             if uinit != _uinit:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `uinit`)
+                fixedvalue.set('value', repr(uinit))
                 updated = 1
         elif nm == 'Vpeak':
             _vpeak = float(child.find('*').get('value'))
             if vpeak != _vpeak:
                 fixedvalue = child.find('UL:FixedValue', ns)
-                fixedvalue.set('value', `vpeak`)
+                fixedvalue.set('value', repr(vpeak))
                 updated = 1
     if (updated > 0):
         tree.write(exptxml)

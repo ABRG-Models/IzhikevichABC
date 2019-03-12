@@ -20,7 +20,7 @@ def load_sc_data (file_path, num_neurons=0):
         base_path = file_path [:end-7]
     else:
         # Error
-        print 'Error: Bad SpineCreator log file name: ' + file_path
+        print ('Error: Bad SpineCreator log file name: {0}'.format(file_path))
         return (0,0,0)
 
     xml_file = base_path + 'rep.xml'
@@ -40,7 +40,7 @@ def load_sc_data (file_path, num_neurons=0):
         # Assumed Analog Log here. May be wrong for event log.
         logFileType = root.find('.//LogFileType')
         if logFileType.text != 'binary':
-            print 'File described by ', xml_file, ' is not marked as being in binary format.'
+            print ('File described by {0} is not marked as being in binary format.'.format(xml_file))
             return(0,0,0)
 
         # Log end is in steps of size dt. Unused at present even
@@ -50,7 +50,6 @@ def load_sc_data (file_path, num_neurons=0):
         num_neurons = int(root.find('.//LogAll').get('size'))
         # Timestep is specified in milliseconds
         dt = float(root.find('.//TimeStep').get('dt'))
-        #print 'End time =', logEndTime, 'ms  num_neurons =', num_neurons, ' dt =', dt, 'ms'
 
     struct_fmt = 'd'
     struct_len = struct.calcsize(struct_fmt)

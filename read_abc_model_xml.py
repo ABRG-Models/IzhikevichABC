@@ -9,12 +9,12 @@ def read_abc_model_xml (modeldir,expt):
     vpeak=0; vinit=0; uinit=0;
 
     modelxml = modeldir+'/model.xml';
-    exptxml = modeldir+'/experiment'+`expt`+'.xml';
+    exptxml = modeldir+'/experiment'+repr(expt)+'.xml';
 
     # We have to deal with the namespace used in the model.xml file.
     ns = {'UL': 'http://www.shef.ac.uk/SpineMLNetworkLayer',
           'LL': 'http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer'}
-  
+
     # Parse the model to find the parameters.
     import xml.etree.ElementTree as et
     et.register_namespace('', "http://www.shef.ac.uk/SpineMLNetworkLayer")
